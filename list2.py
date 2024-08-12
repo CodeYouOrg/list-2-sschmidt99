@@ -4,20 +4,52 @@
 # all adjacent == elements have been reduced to a single element,
 # so [1, 2, 2, 3] returns [1, 2, 3]. You may create a new list or
 # modify the passed in list.
+nums = 0
 
 def remove_adjacent(nums):
-    # +++your code here+++
-    return
+    #Make sure the list is not empty
+    if not nums:           
+        return []
+    
+    #Initialize new list    
+    result = [nums[0]]  
+    for num in nums[1:]:
+        if num != result[-1]:
+            result.append(num)
+    
+    return result
+
+print(remove_adjacent(nums))
+
 
 
 # E. Given two lists sorted in increasing order, create and return a merged
 # list of all the elements in sorted order. You may modify the passed in lists.
 # Ideally, the solution should work in "linear" time, making a single
 # pass of both lists.
-
+list1 = [1, 3, 4, 7, 9]
+list2 = [1, 2, 3, 5, 8]
 def linear_merge(list1, list2):
-    # +++your code here+++
-    return
+    merged_list = []
+    i, j = 0, 0
+
+    while i < len(list1) and j < len(list2):
+        if list1[i] < list2[j]:
+            merged_list.append(list1[i])
+            i += 1
+        else:
+            merged_list.append(list2[j])
+            j += 1
+
+    merged_list.extend(list1[i:])
+    merged_list.extend(list2[j:])
+
+    return merged_list
+
+print(linear_merge(list1, list2))
+
+
+
 
 
 # Note: the solution above is kind of cute, but unforunately list.pop(0)
